@@ -46,6 +46,10 @@
 / {
     chosen {
         zmk,kscan = &kscan0;
+        // Den xanh san co tren board (P0.15). Muon nhap nhay bao hieu thi phai
+        // muon he thong backlight cua ZMK, vi ZMK khong co behavior nao dieu
+        // khien den GPIO truc tiep.
+        zmk,backlight = &{/leds};
     };
 
     kscan0: kscan_0 {
