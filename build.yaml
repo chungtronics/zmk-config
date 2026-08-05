@@ -22,3 +22,13 @@ include:
   - board: nice_nano_v2
     shield: media_dial
     artifact-name: kevix_dial
+  # Ban go loi: khong co encoder, chi con 1 phim mute.
+  # Dung de xac dinh loi co phai do encoder gay ra hay khong.
+  - board: nice_nano_v2
+    shield: media_dial_noenc
+    artifact-name: kevix_dial_khong_encoder
+  # Ban go loi: in log ra cong USB de xem firmware chet o dau.
+  - board: nice_nano_v2
+    shield: media_dial
+    snippet: zmk-usb-logging
+    artifact-name: kevix_dial_co_log
