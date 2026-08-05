@@ -55,8 +55,8 @@
             display-name = "Media";
             bindings = <&td_media>;
 
-            // Xoay phai: tang tieng -- Xoay trai: giam tieng
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            // Xoay trai: tang tieng -- Xoay phai: giam tieng
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
         };
 
         track_layer {
@@ -64,7 +64,7 @@
             bindings = <&trans>;
 
             // Nhan 3 lan, giu lan cuoi roi xoay: chuyen bai hat
-            sensor-bindings = <&inc_dec_kp C_NEXT C_PREV>;
+            sensor-bindings = <&inc_dec_kp C_PREV C_NEXT>;
         };
 
         // Layer trong de danh cho ZMK Studio. Ban build thuong bo qua chung,
