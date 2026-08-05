@@ -28,3 +28,8 @@ include:
     shield: media_dial
     cmake-args: -DCONFIG_EC11=n
     artifact-name: media_dial_khong_encoder
+  # Ban go loi: in log ra cong USB de xem firmware chet o dau.
+  - board: nice_nano_v2
+    shield: media_dial
+    snippet: zmk-usb-logging
+    artifact-name: media_dial_co_log
