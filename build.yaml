@@ -17,23 +17,36 @@
 #     cmake-args: -DCONFIG_ZMK_STUDIO=y
 #     artifact-name: corne_left_with_studio
 #
+# Ghi chu ve snippet nrf52840-nosd:
+# Bootloader tren board nay khong co SoftDevice, no nhay vao ung dung o dia chi
+# 0x1000. Firmware nice_nano_v2 mac dinh nam o 0x26000 nen khong bao gio chay,
+# board reset lai ve che do nap uf2. Snippet nay doi phan vung ve 0x1000.
 ---
 include:
   - board: nice_nano_v2
     shield: media_dial
+    snippet: nrf52840-nosd
     artifact-name: kevix_dial
   # Ban go loi: khong co encoder, chi con 1 phim mute.
   # Dung de xac dinh loi co phai do encoder gay ra hay khong.
   - board: nice_nano_v2
     shield: media_dial_noenc
+    snippet: nrf52840-nosd
     artifact-name: kevix_dial_khong_encoder
   # Nap file nay truoc de xoa sach du lieu pairing cu con sot lai,
   # sau do nap lai firmware that. Ban than no khong chay BLE.
   - board: nice_nano_v2
     shield: settings_reset
+    snippet: nrf52840-nosd
     artifact-name: xoa_settings
   # Ban go loi: in log ra cong USB de xem firmware chet o dau.
+  # Dung cmake-args vi can hai snippet cung luc, ma "snippet:" chi nhan mot.
   - board: nice_nano_v2
     shield: media_dial
-    snippet: zmk-usb-logging
+    cmake-args: -DSNIPPET="nrf52840-nosd;zmk-usb-logging"
     artifact-name: kevix_dial_co_log
+  # Ban doi chung: giu nguyen phan vung mac dinh cua nice_nano_v2.
+  # Neu ban nay chay duoc thi gia thuyet phan vung o tren la sai.
+  - board: nice_nano_v2
+    shield: media_dial
+    artifact-name: kevix_dial_phanvung_goc
