@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: MIT
+
+if SHIELD_MEDIA_DIAL_NOENC
+
+config ZMK_KEYBOARD_NAME
+    default "Media Dial NoEnc"
+
+endif # SHIELD_MEDIA_DIAL_NOENC
