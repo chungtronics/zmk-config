@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: MIT
+
+config SHIELD_MEDIA_DIAL_NOENC
+    def_bool $(shields_list_contains,media_dial_noenc)
