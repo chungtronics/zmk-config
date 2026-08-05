@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: MIT
+
+if SHIELD_MEDIA_DIAL
+
+config ZMK_KEYBOARD_NAME
+    default "Media Dial"
+
+config EC11
+    default y
+
+if EC11
+
+config EC11_TRIGGER_GLOBAL_THREAD
+    default y
+
+endif # EC11
+
+endif # SHIELD_MEDIA_DIAL
