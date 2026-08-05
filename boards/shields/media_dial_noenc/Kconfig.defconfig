@@ -2,7 +2,10 @@
 
 if SHIELD_MEDIA_DIAL_NOENC
 
+# Toi da 15 ky tu, neu khong se dut o BUILD_ASSERT cua Zephyr
+# (BT_DEVICE_NAME_MAX = 16, do dai ten phai NHO HON con so nay).
+# Ban go loi them hau to NE cho de phan biet khi do tim thiet bi.
 config ZMK_KEYBOARD_NAME
-    default "Media Dial NoEnc"
+    default "KeviX Dial NE"
 
 endif # SHIELD_MEDIA_DIAL_NOENC

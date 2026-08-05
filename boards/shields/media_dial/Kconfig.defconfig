@@ -2,8 +2,10 @@
 
 if SHIELD_MEDIA_DIAL
 
+# Toi da 15 ky tu, neu khong se dut o BUILD_ASSERT cua Zephyr
+# (BT_DEVICE_NAME_MAX = 16, do dai ten phai NHO HON con so nay).
 config ZMK_KEYBOARD_NAME
-    default "Media Dial"
+    default "KeviX Dial"
 
 config EC11
     default y
