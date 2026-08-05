@@ -10,8 +10,11 @@ config EC11
 
 if EC11
 
-config EC11_TRIGGER_GLOBAL_THREAD
-    default y
+# EC11_TRIGGER_GLOBAL_THREAD la mot lua chon trong choice EC11_TRIGGER_MODE,
+# nen phai dat default o cap choice chu khong dat truc tiep tren symbol.
+choice EC11_TRIGGER_MODE
+    default EC11_TRIGGER_GLOBAL_THREAD
+endchoice
 
 endif # EC11
 
