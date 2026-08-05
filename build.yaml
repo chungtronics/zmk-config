@@ -1,16 +1,22 @@
 # This file generates the GitHub Actions matrix.
 #
-# QUAN TRONG - snippet nrf52840-nosd:
+# QUAN TRONG - phan vung flash:
 # Bootloader tren con Pro Micro nRF52840 nay khong co SoftDevice, no nhay vao
 # ung dung o dia chi 0x1000. Firmware nice_nano_v2 mac dinh nam o 0x26000 nen
-# khong bao gio chay, board reset lai ve che do nap uf2. Snippet nay doi phan
-# vung code ve 0x1000 (giong bo cuc ma firmware nice60 dung).
-# DUNG BO DONG "snippet: nrf52840-nosd" o bat ky muc build nao.
+# khong bao gio chay, board reset lai ve che do nap uf2.
+# Shield media_dial da tu doi phan vung ve 0x1000 ngay trong media_dial.overlay,
+# nen KHONG dat them "snippet: nrf52840-nosd" cho no (se bao loi trung node).
+# Rieng shield settings_reset khong co overlay rieng nen van can snippet do.
 ---
 include:
   - board: nice_nano_v2
     shield: media_dial
-    snippet: nrf52840-nosd
+    snippet: studio-rpc-usb-uart
+    cmake-args: -DCONFIG_ZMK_STUDIO=y
+    artifact-name: kevix_dial_studio
+  # Ban khong co Studio: nhe hon, ton it RAM va pin hon.
+  - board: nice_nano_v2
+    shield: media_dial
     artifact-name: kevix_dial
   # Nap file nay de xoa sach du lieu pairing dang luu, sau do nap lai
   # firmware that. Ban than no khong chay BLE nen se khong hien ra dau.

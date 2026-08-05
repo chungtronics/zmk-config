@@ -13,6 +13,36 @@
  * tren silk, chi khac GPIO ben trong (P0.15 / P0.17 / P0.20).
  */
 
+#include <dt-bindings/zmk/matrix_transform.h>
+#include <physical_layouts.dtsi>
+
+/*
+ * Bootloader tren board nay khong co SoftDevice: no nhay vao ung dung o dia chi
+ * 0x1000, trong khi firmware nice_nano_v2 mac dinh nam o 0x26000. Neu khong doi
+ * phan vung thi firmware khong bao gio chay, board quay ve che do nap uf2.
+ * Doan duoi day chinh la noi dung cua snippet nrf52840-nosd, dat thang vao day
+ * de khong bao gio bi quen khi sua build.yaml.
+ */
+/delete-node/ &sd_partition;
+/delete-node/ &code_partition;
+/delete-node/ &storage_partition;
+
+&flash0 {
+    partitions {
+        sd_partition: partition@0 {
+            reg = <0x0 DT_SIZE_K(4)>;
+        };
+
+        code_partition: partition@1000 {
+            reg = <DT_SIZE_K(4) DT_SIZE_K(844)>;
+        };
+
+        storage_partition: partition@d4000 {
+            reg = <DT_SIZE_K(848) DT_SIZE_K(128)>;
+        };
+    };
+};
+
 / {
     chosen {
         zmk,kscan = &kscan0;
@@ -37,5 +67,24 @@
         compatible = "zmk,keymap-sensors";
         sensors = <&encoder>;
         triggers-per-rotation = <20>;
+    };
+
+    // ZMK Studio bat buoc phai co physical layout kem thuoc tinh "keys",
+    // va KHONG duoc dat chosen zmk,matrix-transform.
+    default_transform: keymap_transform {
+        compatible = "zmk,matrix-transform";
+        columns = <1>;
+        rows = <1>;
+        map = <RC(0,0)>;
+    };
+
+    dial_layout: dial_layout {
+        compatible = "zmk,physical-layout";
+        display-name = "Dial";
+        transform = <&default_transform>;
+        kscan = <&kscan0>;
+        keys  //                     w   h    x    y   rot   rx   ry
+            = <&key_physical_attrs 100 100    0    0     0    0    0>
+            ;
     };
 };
